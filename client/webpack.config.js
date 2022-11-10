@@ -27,22 +27,22 @@ module.exports = () => {
       }),
 
       new WebpackPwaManifest({
-        name: "My Progressive Web App",
-        short_name: "MyPWA",
-        description: "My awesome Progressive Web App!",
-        background_color: "#ffffff",
+        name: "Text Editor",
+        short_name: "Editor",
+        description: "My awesome Progressive TEXT Editor!",
+        background_color: "#22a347",
         crossorigin: "use-credentials", //can be null, use-credentials or anonymous
+        start_url: "/",
+        publicPath: "/",
         icons: [
           {
-            src: path.resolve("src/assets/icon.png"),
+            src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+            destination: path.join("assets", "icons"),
           },
+
           {
-            src: path.resolve("src/assets/large-icon.png"),
-            size: "1024x1024", // you can also use the specifications pattern
-          },
-          {
-            src: path.resolve("src/assets/maskable-icon.png"),
+            src: path.resolve("src/images/logo.png"),
             size: "1024x1024",
             purpose: "maskable",
           },
@@ -51,7 +51,27 @@ module.exports = () => {
     ],
 
     module: {
-      rules: [],
+      rules: [
+        {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
+        },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          // Add babel-loader to webpack in order to use ES6
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
+            },
+          },
+        },
+      ],
     },
   };
 };
