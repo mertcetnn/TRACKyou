@@ -1,12 +1,6 @@
 {
   "icons": [
     {
-      "src": "/icon_1024x1024.png",
-      "sizes": "1024x1024",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
       "src": "/assets/icons/icon_512x512.png",
       "sizes": "512x512",
       "type": "image/png"
@@ -37,11 +31,12 @@
       "type": "image/png"
     }
   ],
-  "name": "Text Editor",
-  "short_name": "Editor",
+  "name": "text-editor",
+  "short_name": "JATE",
   "orientation": "portrait",
   "display": "standalone",
   "start_url": "/",
-  "description": "My awesome Progressive TEXT Editor!",
-  "background_color": "#22a347"
+  "description": "Just Another Text Editor!",
+  "background_color": "#225ca3",
+  "theme_color": "#225ca3"
 }
